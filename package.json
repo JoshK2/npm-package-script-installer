@@ -1,20 +1,39 @@
 {
   "name": "packagescriptinstaller",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Install npm packages with script, to increase the number of downloads rapidly in npm",
+  "main": "lib/index.js",
+  "private": false,
+  "files": ["lib/**/*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshK2/package-script-installer"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "npm",
+    "package",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "JoshK2",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoshK2/package-script-installer/issues"
+  },
+  "homepage": "https://github.com/JoshK2/package-script-installer",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run format && tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\""
+  },
   "dependencies": {
+    "@bit/joshk.jotils.random-between": "^1.0.5",
     "child-process-promise": "^2.2.1",
     "fs": "0.0.1-security",
     "rimraf": "^2.6.3"
   },
   "devDependencies": {
-    "@types/node": "^11.9.3"
+    "@types/node": "^11.9.3",
+    "prettier": "^1.16.4"
   }
 }

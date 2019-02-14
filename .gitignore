@@ -2,9 +2,11 @@
 
 # dependencies
 /node_modules
+/lib
 
 # testing
 /coverage
+.vscode
 
 # production
 /build
