@@ -1,0 +1,2 @@
+In this directory the script will create a folder to create project and then install the pacakge.
+After the package is installed, the directory will be removed.
