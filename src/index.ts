@@ -89,6 +89,7 @@ async function main() {
   for (let index = 0; index < params.installNumber; index++) {
     numberArray.push(index);
   }
+  let counter: number = 0;
   asyncForEach(numberArray, async function() {
     await timeout(randomBetween(10000, 30000)); // 10 - 30 secondes
 
@@ -100,6 +101,8 @@ async function main() {
 
     const deleted = await deleteDirectory(dir);
     console.log(`directory delete ${deleted}`);
+    counter++;
+    console.log(`number of install: ${counter}`);
   });
 }
 
