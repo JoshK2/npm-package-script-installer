@@ -1,6 +1,7 @@
 # npm-package-script-installer
 
 npm-package-script-installer let you install npm packages with script, to increase the number of downloads rapidly in npm.
+If you created a good and useful project, you did not need to use this script...
 
 ## Installation
 
