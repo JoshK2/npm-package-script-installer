@@ -2,7 +2,10 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 const exec = require('child-process-promise').exec;
 const path = process.cwd();
-const randomBetween = require('@bit/joshk.jotils.random-between');
+
+function getRandomNumber(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
 
 async function asyncForEach(array: Array<any>, callback: any) {
   for (let index = 0; index < array.length; index++) {
@@ -23,7 +26,7 @@ function timeout(ms: number) {
 
 async function createDirectory(): Promise<string> {
   const name = makeid();
-  await new Promise(async (resolve, reject) => {
+  await new Promise<void>(async (resolve, reject) => {
     fs.mkdir(`${path}/tmp/${name}`, (err: any) => {
       if (err) reject(err);
       else resolve();
@@ -34,7 +37,7 @@ async function createDirectory(): Promise<string> {
 
 async function deleteDirectory(directory: string): Promise<boolean> {
   let deleted = false;
-  await new Promise(async (resolve, reject) => {
+  await new Promise<void>(async (resolve, reject) => {
     rimraf(`${path}/tmp/${directory}`, function() {
       console.log('delete done');
       deleted = true;
@@ -46,7 +49,7 @@ async function deleteDirectory(directory: string): Promise<boolean> {
 
 async function installPackage(dir: string, command: string): Promise<boolean> {
   let packageInstalled = false;
-  await new Promise(async (resolve, reject) => {
+  await new Promise<void>(async (resolve, reject) => {
     exec(`npm init --yes`, { cwd: `${path}/tmp/${dir}` })
       .then(function(result: any) {
         var stdout = result.stdout;
@@ -91,7 +94,7 @@ async function main() {
   }
   let counter: number = 0;
   asyncForEach(numberArray, async function() {
-    await timeout(randomBetween(10000, 30000)); // 10 - 30 secondes
+    await timeout(getRandomNumber(10000, 30000)); // 10 - 30 secondes
 
     const dir = await createDirectory();
     console.log(`created directory ${dir}`);
